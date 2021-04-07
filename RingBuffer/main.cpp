@@ -12,9 +12,17 @@ int main()
     textring.add("three");
     textring.add("four");
 
-    for (int i = 0; i < textring.size(); i++)
+    // use iterator to iterate through the buffer
+    // c++ 98
+    for (ring<string>::iterator it = textring.begin(); it != textring.end(); it++)
     {
-        cout << textring.get(i) << endl;
+        cout << *it << endl;
+    }
+    cout << endl;
+    // c++ 11
+    for (auto val : textring)
+    {
+        cout << val << endl;
     }
     return 0;
 }
