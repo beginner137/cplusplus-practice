@@ -1,6 +1,6 @@
 #include "Complex.h"
 
-namespace caveofprogramming
+namespace ComplexNum
 {
 
     ostream &operator<<(ostream &out, const Complex &c)

@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-namespace caveofprogramming
+namespace ComplexNum
 {
 
     class Complex
@@ -38,6 +38,6 @@ namespace caveofprogramming
     Complex operator+(const Complex &c1, double d);
     Complex operator+(double d, const Complex &c1);
 
-} /* namespace caveofprogramming */
+}
 
-#endif /* COMPLEX_H_ */
+#endif
