@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Complex.h"
 using namespace std;
-using namespace caveofprogramming;
+using namespace ComplexNum;
 
 int main()
 {
