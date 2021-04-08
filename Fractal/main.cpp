@@ -13,7 +13,7 @@ int main()
     Bitmap bitmap(WIDTH, HEIGHT);
     double min = 999999;
     double max = -999999;
-    // make the entire bitmap red.
+
     for (int y = 0; y < HEIGHT; y++)
     {
         for (int x = 0; x < WIDTH; x++)
