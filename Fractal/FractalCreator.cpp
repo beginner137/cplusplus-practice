@@ -42,6 +42,10 @@ namespace BitmapAll
 
     void FractalCreator::drawFractal()
     {
+        RGB startColor(0, 0, 20);
+        RGB endColor(255, 178, 74);
+        RGB colorDiff = endColor - startColor;
+
         for (int y = 0; y < m_height; y++)
         {
             for (int x = 0; x < m_width; x++)
@@ -58,7 +62,9 @@ namespace BitmapAll
                         hue += (double)m_histogram[i] / m_total;
                     }
 
-                    green = hue * 255;
+                    red = startColor.r + colorDiff.r * hue;
+                    green = startColor.g + colorDiff.g * hue;
+                    blue = startColor.b + colorDiff.b * hue;
                 }
                 m_bitmap.setPixel(x, y, red, green, blue);
             }
@@ -73,5 +79,13 @@ namespace BitmapAll
     void FractalCreator::writeBitmap(string name)
     {
         m_bitmap.write(name);
+    }
+
+    void FractalCreator::run(string name)
+    {
+        calculateIteration();
+        calculateTotalIterations();
+        drawFractal();
+        writeBitmap("test.bmp");
     }
 }

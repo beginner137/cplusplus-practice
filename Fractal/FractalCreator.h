@@ -5,6 +5,7 @@
 #include "Bitmap.h"
 #include "Mandelbrot.h"
 #include "ZoomList.h"
+#include "RGB.h"
 
 using namespace std;
 namespace BitmapAll
@@ -20,14 +21,16 @@ namespace BitmapAll
         ZoomList m_zoomList;
         int m_total{0};
 
-    public:
-        FractalCreator(int width, int height);
-        virtual ~FractalCreator();
         void calculateIteration();
         void calculateTotalIterations();
         void drawFractal();
-        void addZoom(const Zoom &zoom);
         void writeBitmap(string name);
+
+    public:
+        FractalCreator(int width, int height);
+        void run(string name);
+        void addZoom(const Zoom &zoom);
+        virtual ~FractalCreator();
     };
 }
 
