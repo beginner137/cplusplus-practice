@@ -9,6 +9,10 @@ using namespace std;
 
 double calculatePi(int terms)
 {
+    if (terms < 1)
+    {
+        throw runtime_error("Terms cannot be less than 1");
+    }
     double sum = 0.0;
     for (int i = 0; i < terms; i++)
     {
@@ -23,12 +27,28 @@ int main()
 {
     promise<double> promise;
     auto do_calculation = [&](int terms) {
-        auto result = calculatePi(terms);
-        promise.set_value(result);
+        try
+        {
+            auto result = calculatePi(terms);
+            promise.set_value(result);
+        }
+        catch (const exception &e)
+        {
+            promise.set_exception(current_exception());
+        }
     };
-    thread t1(do_calculation, 1e7);
+    thread t1(do_calculation, 0);
     future<double> future = promise.get_future();
-    cout << setprecision(15) << future.get() << endl;
+
+    try
+    {
+        cout << setprecision(15) << future.get() << endl;
+    }
+    catch (const std::exception &e)
+    {
+        cout << e.what() << '\n';
+    }
+
     t1.join();
     return 0;
 }
