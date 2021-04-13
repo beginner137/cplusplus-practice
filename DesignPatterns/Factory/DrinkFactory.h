@@ -32,6 +32,7 @@ class DrinkWithVolumeFactory
     map<string, function<unique_ptr<HotDrink>()> > factories;
 
 public:
+    //functional factory
     DrinkWithVolumeFactory()
     {
         factories["tea"] = [] {
